@@ -3,6 +3,8 @@
  * This build does not include IDNA Support in order to avoid the punycode
  * dependency.
  *
+ * Adding amd support.
+ *
  * @module
  */
 
@@ -32,6 +34,11 @@
 // IDNA SUPPORT REMOVED FOR KANSO BUILD
 //var punycode = require('punycode');
 
+if (typeof define !== 'function') {
+    var define = require('amdefine')(module, require);
+}
+
+define(['require'], function(require) {
 
 // ADDED FOR BROWSER SUPPORT - functions borrowed from underscore.js
 var _keys = Object.keys || function(obj) {
@@ -644,3 +651,5 @@ function parseHost(host) {
   if (host) out.hostname = host;
   return out;
 }
+    return exports;
+});
