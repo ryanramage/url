@@ -38,7 +38,10 @@ if (typeof define !== 'function') {
     var define = require('amdefine')(module, require);
 }
 
-define(['require'], function(require) {
+define(['require', 'querystring'], function(require) {
+
+var querystring = require('querystring');
+var exports = {};
 
 // ADDED FOR BROWSER SUPPORT - functions borrowed from underscore.js
 var _keys = Object.keys || function(obj) {
@@ -118,8 +121,8 @@ var protocolPattern = /^([a-z0-9.+-]+:)/i,
       'ftp:': true,
       'gopher:': true,
       'file:': true
-    },
-    querystring = require('querystring');
+    }
+
 
 function urlParse(url, parseQueryString, slashesDenoteHost) {
   if (url && typeof(url) === 'object' && url.href) return url;
